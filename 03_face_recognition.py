@@ -8,7 +8,7 @@ picam2.configure(picam2.create_preview_configuration(main={"format": 'XRGB8888',
 picam2.start()
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-recognizer.read("trainer/model.yml")
+recognizer.read("models/model.yml")
 
 face_detector = cv2.CascadeClassifier("/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml")
 cv2.startWindowThread()

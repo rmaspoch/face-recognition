@@ -43,6 +43,6 @@ with os.scandir(USERS_DIR) as it:
 print("\n[INFO] Training recognizer with user images...")
 recognizer.train(allFaces, np.array(allLabels))
 # save model
-recognizer.write("trainer/model.yml")
+recognizer.write("models/model.yml")
 
 print("\n[INFO] {} faces trained".format(len(np.unique(allLabels))))
