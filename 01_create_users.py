@@ -27,22 +27,21 @@ while True:
     im = picam2.capture_array()
 
     gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-    faces = face_detector.detectMultiScale(gray, 1.1, 5)
+    faces = face_detector.detectMultiScale(gray, 1.3, 5)
 
     for (x, y, w, h) in faces:
         cv2.rectangle(im, (x, y), (x + w, y + h), (0, 255, 0))
-
-    cv2.imshow("Camera", im)
-    k = cv2.waitKey(100) % 256
-    # Press ESC to exit
-    if k == 27 or count >= MAX_CAPTURES:
-        print("ESC pressed, exiting...")
-        break
-    elif k == 32:
         count += 1
         # Save captured image
         imgName = userPath + "/image_{}.jpg".format(count)
         cv2.imwrite(imgName, gray[y:y+h,x:x+w])
         print("{} saved".format(imgName))
+        
+    cv2.imshow("Camera", im)
+    k = cv2.waitKey(100) % 256
+    # Press ESC to exit
+    if k == 27 or count >= MAX_CAPTURES:
+        print("Exiting...")
+        break
               
 cv2.destroyAllWindows()
